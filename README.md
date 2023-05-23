@@ -1,4 +1,4 @@
-# addon-example-function-call-zig <img alt="Zig Logo" src="https://raw.githubusercontent.com/ziglang/logo/master/zig-logo-dark.svg" width="200">
+# node-addon-example-function-call-zig <img alt="Zig Logo" src="https://raw.githubusercontent.com/ziglang/logo/master/zig-logo-dark.svg" width="200">
 
 
 Example of addon using [Zig lang](https://ziglang.org/). This example will call a JavaScript function from a native add-on. This is the primary mechanism of calling back from the add-on's native code into JavaScript. For the special case of calling into JavaScript after an async operation, see [napi_make_callback](https://nodejs.org/api/n-api.html#napi_make_callback) [[github]](https://github.com/nodejs/node/blob/main/doc/api/n-api.md?plain=1#LL5610C6-L5610C24).
