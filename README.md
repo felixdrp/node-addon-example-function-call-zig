@@ -43,3 +43,16 @@ npm run bdev
 Many thanks to https://staltz.com for his example.
 [1]: https://staltz.com
 [2]: https://github.com/staltz/zig-nodejs-example
+
+## Learning Zig
+
+ - [zig doc](https://ziglang.org/documentation/master/)
+ - [zig api ref](https://ziglang.org/documentation/master/std/#A;std)
+ - [ziglearn](https://ziglearn.org)
+ - [ikrima.dev zig-crash-course](https://ikrima.dev/dev-notes/zig/zig-crash-course/)
+ - [https://zig.news/](https://zig.news/)
+
+## Debug Zig
+
+- [Debug node addon by Atul](https://medium.com/@a7ul/debugging-nodejs-c-addons-using-vs-code-27e9940fc3ad)
+- [Debug zig by Chris Watson](https://dev.to/watzon/debugging-zig-with-vs-code-44ca)
