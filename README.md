@@ -50,7 +50,7 @@ Many thanks to https://staltz.com for his example.
  - [zig api ref](https://ziglang.org/documentation/master/std/#A;std)
  - [ziglearn](https://ziglearn.org)
  - [ikrima.dev zig-crash-course](https://ikrima.dev/dev-notes/zig/zig-crash-course/)
- - [https://zig.news/](https://zig.news/)
+ - [zig.news](https://zig.news/)
 
 ## Debug Zig
 
