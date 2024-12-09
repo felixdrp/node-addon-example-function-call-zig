@@ -11,8 +11,8 @@ fn nativeFunction(env: c.napi_env, info: c.napi_callback_info) callconv(.C) c.na
     var result: c.napi_value = undefined;
 
     // Get function parameters
-    var argc: usize  = 3; // equivalent type size_t More info https://ziglang.org/documentation/master/#Primitive-Types
-    var argv: [3]c.napi_value = .{};
+    var argc: usize = 3; // equivalent type size_t More info https://ziglang.org/documentation/master/#Primitive-Types
+    var argv: [3]c.napi_value = undefined;
     // [out] thisArg: Receives the JavaScript this argument for the call. thisArg can optionally be ignored by passing NULL.
     // [out] data: Receives the data pointer for the callback. data can optionally be ignored by passing NULL.
     var thisArg: c.napi_value = undefined;
@@ -23,22 +23,21 @@ fn nativeFunction(env: c.napi_env, info: c.napi_callback_info) callconv(.C) c.na
 
     var value_type: c.napi_valuetype = undefined;
     status = c.napi_typeof(env, argv[0], &value_type);
-    
+
     // Check function type
     std.debug.print("  js_callback = {?}\n", .{argv[0]});
     // https://nodejs.org/api/n-api.html#napi_valuetype
     std.debug.print("  value_type type index = {any}\n\n", .{value_type});
     std.debug.print("  value_type is a function {any}\n\n", .{value_type == c.napi_function});
 
-
     // Call function https://nodejs.org/api/n-api.html#napi_call_function
     // Example https://github.com/nodejs/node-addon-api/issues/675
     var hello: c.napi_value = undefined;
     var call_text: c.napi_value = undefined;
-    var call_argc: usize = 2;
+    const call_argc: usize = 2;
     status = c.napi_create_string_utf8(env, "hello", c.NAPI_AUTO_LENGTH, &hello);
     status = c.napi_create_string_utf8(env, " world!!! :-)", c.NAPI_AUTO_LENGTH, &call_text);
-    
+
     var call_argv: [2]c.napi_value = undefined;
     call_argv[0] = hello;
     call_argv[1] = call_text;
@@ -53,7 +52,7 @@ fn nativeFunction(env: c.napi_env, info: c.napi_callback_info) callconv(.C) c.na
 
         // https://github.com/nodejs/node/blob/adcbfcec60a19dda0038890923b312395ef326f5/test/js-native-api/test_general/test_general.c#L80
         status = c.napi_get_last_error_info(env, &error_info);
-        
+
         // Pass error to Node
         status = c.napi_throw_error(env, null, error_info.*.error_message);
         std.debug.print("Error_struct {any}\n\n", .{@TypeOf(error_info.*.error_message.*)});
@@ -71,7 +70,7 @@ export fn napi_register_module_v1(env: c.napi_env, exports: c.napi_value) c.napi
 
     if (c.napi_set_named_property(env, exports, "foo", function) != c.napi_ok) {
         _ = c.napi_throw_error(env, null, "Failed to add function to exports");
-	    return null;
+        return null;
     }
 
     return exports;
